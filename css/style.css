@@ -1,0 +1,123 @@
+
+body{
+    background-color: gainsboro;
+    background-size: cover;
+}
+.box{
+    background-color: gainsboro;
+    margin: 10px;
+}
+.canvas {
+    background-color: white;
+    margin: 7px;
+    display: inline-block;
+    box-shadow: 3px 3px 7px grey;
+    -webkit-box-shadow: 3px 3px 7px grey;
+    -moz-box-shadow: 3px 3px 7px grey;
+    z-index: 0;
+}
+
+.sidebar_canvas {
+    height: 700px;
+    width:30.7%;
+    margin-right: 0;
+    z-index: 0;
+    position: fixed;
+    overflow: scroll;
+}
+.main_canvas{
+    height: 700px;
+    width: 64.6%;
+    z-index: 0;
+    margin-left: 32%;
+    position: fixed;
+    overflow: hidden;
+}
+
+
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.add {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+   
+}
+
+.add:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+.remove {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+    
+}
+.remove:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+
+.load {
+    background-color: white; 
+    color: black; 
+    border: 2px solid rebeccapurple;
+    
+}
+.load:hover {
+    background-color: rebeccapurple;
+    color: white;
+}
+
+
+
+
+
+
+
+
+.btn {
+    margin-right: 8px;
+}
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "RDM",
+  "authors": [
+    "pranalipatil209 <pranalipatil209@gmail.com>"
+  ],
+  "description": "Redis Desktop Manager(UI)",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.3.1"
+  }
+}
