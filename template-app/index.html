@@ -1,0 +1,114 @@
+<!--
+Title:Reading Data From RedisServer.
+Created By:Jayprakash yadav
+Discreption: Reading Data From RedisServer.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>RedisData</title>
+
+  <!-- Stylesheets -->
+   <link rel="stylesheet" href="../css/photon.css">
+
+  <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/angular-ui-tree.css">
+  <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css">
+  <link rel="stylesheet" href="bower_components/smalltalk/css/smalltalk.css">
+  <link rel="stylesheet" href="css/style.css">
+ 
+</head>
+
+<body ng-app="myApp" ng-controller="homeCtrl">
+ <div class="window">
+   <header class="toolbar toolbar-header">
+      <h1 class="title">Redis Data</h1>
+       
+    </header>
+    <div class="window-content">
+  <div class="row box" >
+    <div class="sidebar_canvas canvas" ng-init="init()" >
+      <div ui-tree >
+        <p>Search Data: <input ng-model="query"></p>
+        <ol ui-tree-nodes="" ng-model="data1">
+          <li ng-repeat="item in data1" ui-tree-node ng-show="([item.title] | filter:query).length">
+            <div ui-tree-handle data-nodrag ng-click="click(this)">
+              <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+              class="glyphicon glyphicon-remove"></span></a> {{item.title}}
+            </div>
+            <!--<ol ui-tree-nodes="" ng-model="item.nodes">
+              <li ng-repeat="subItem in item.nodes" ui-tree-node>
+                <div ui-tree-handle data-nodrag ng-click="test(this)">
+                  {{subItem.title}}
+                </div>
+              </li>
+            </ol>-->
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="main_canvas canvas">
+  <br>
+  <center>
+    <h1>Data Info</h1>
+  </center>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Sr.No
+        </th>
+        <th>Key
+        </th>
+        <th>Data
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="itemB in items">
+        <td>{{ $index + 1 }}</td>
+        <td>{{itemB.key}}</td>
+        <td>{{itemB.value}}</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+  <center><button class="button add" ng-click="add()">Add</button>
+  <button class="button remove" ng-click="remove()">Remove</button>
+  <button class="button load" ng-click="load()">Load Data</button></center>
+
+</div>
+</div>
+    </div>
+      <footer class="toolbar toolbar-footer">
+      <h1 class="title">Footer</h1>
+    </footer>
+</div>
+  
+
+</body>
+
+<!-- JavaScript -->
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular/angular-animate.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+<script src="bower_components/jquery/dist/jquery.js" crossorigin="anonymous"></script>
+<script src="bower_components/smalltalk/dist/smalltalk.poly.min.js" crossorigin="anonymous"></script>
+<!-- Boostrap -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.js" crossorigin="anonymous"></script>
+
+
+<!-- Javascript -->
+  <script src="js/menu.js" charset="utf-8"></script>
+<!-- Dependency -->
+<script src=controllers/redisCtrl.js></script>
+<script src=service/redisService.js></script>
+</body>
+
+</html>
