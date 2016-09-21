@@ -8,14 +8,16 @@ angular.module('myApp', ['ui.tree'])
     var array = [];
     var c = true;
     var scanStart = 0;
-
+    var i=0;
     // Initializing function called when sidebar initialzied via DOM
     $scope.init=function () {
-      var final = [];
+    
       // Fetch list of Data Structure starting from scanStart
       var cb = function (data, type) {
+          var final = [];
        array.push(type);
-        if (array.length == 3) {
+       i++;
+        if (array.length == i) {
           for (var j = 0; j < array.length; j++) {
             array[j].forEach(function (n, index) {
               final.push({
@@ -24,15 +26,13 @@ angular.module('myApp', ['ui.tree'])
               });//end of push
             });//end of forEach
           }
-          console.log('data', final)
-        //binding the data to view
-        $scope.data1 = final;
-
-        }
+          }
         scanStart = data[0];
         // console.log(scanStart)
         if (data[0] != 0) redisService.scan(scanStart, cb);
-
+          console.log('data', final)
+        //binding the data to view
+        $scope.data1 = final;
       };
           
       console.log("calling doScan");
@@ -65,7 +65,7 @@ angular.module('myApp', ['ui.tree'])
         console.log(name, dname, dkey, dvalue);
         redisService.addData(name, dname, dkey, dvalue).then(function (su) {
           alert(su);
-
+     
           location.reload();
         })
       }); //end of prompt
