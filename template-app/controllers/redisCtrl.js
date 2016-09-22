@@ -66,10 +66,10 @@ angular.module('myApp', ['ui.tree'])
 
         console.log(name, dname, dkey, dvalue);
         redisService.addData(name, dname, dkey, dvalue).then(function (su) {
-          smalltalk.alert('Done',su).then(function() {
-             location.reload();
-              });
-         
+          smalltalk.alert('Done', su).then(function () {
+            location.reload();
+          });
+
 
         })
       }); //end of prompt
@@ -85,9 +85,9 @@ angular.module('myApp', ['ui.tree'])
         var dkey = spl[4];
         console.log(name, dname, dkey);
         redisService.removeData(name, dname, dkey).then(function (su) {
-        smalltalk.alert('Done',su).then(function() {
-             location.reload();
-              });
+          smalltalk.alert('Done', su).then(function () {
+            location.reload();
+          });
         })
 
       });//end of prompt
@@ -96,16 +96,14 @@ angular.module('myApp', ['ui.tree'])
     $scope.load = function () {
       $scope.dataLoaded = true;
       setTimeout(function () {
-     
-         
-         smalltalk.alert('Done','Data Loaded Successfully').then(function() {
-              $scope.dataLoaded = false;
-             
-});
+        smalltalk.alert('Done', 'Data Loaded Successfully').then(function () {
+          $scope.dataLoaded = false;
+
+        });
       }, 300);
 
     }
-    
+
     var today = new Date();
     document.getElementById('dtText').innerHTML = today.toDateString();
   })//end of controller
