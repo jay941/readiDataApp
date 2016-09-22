@@ -45,7 +45,6 @@ angular.module('myApp', ['ui.tree'])
     //function click Used to find selected node
     $scope.click = function (a) {
       var selected = a.$$watchers[0].last;
-      console.log('test function ', selected);
       //passing selected data and retriving value from servise-redisService
       redisService.getData(selected).then(function (find) {
         console.log(find)
