@@ -36,8 +36,9 @@ Discreption: Reading Data From RedisServer.
         <ol ui-tree-nodes="" ng-model="data1">
           <li ng-repeat="item in data1" ui-tree-node ng-show="([item.title] | filter:query).length">
             <div ui-tree-handle data-nodrag ng-click="click(this)">
-              <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
-              class="glyphicon glyphicon-remove"></span></a> {{item.title}}
+              <!--<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span
+              class="glyphicon glyphicon-remove"></span></a> -->
+              {{item.title}}
             </div>
             <!--<ol ui-tree-nodes="" ng-model="item.nodes">
               <li ng-repeat="subItem in item.nodes" ui-tree-node>
