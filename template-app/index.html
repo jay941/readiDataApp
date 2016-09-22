@@ -25,9 +25,9 @@ Discreption: Reading Data From RedisServer.
 <body ng-app="myApp" ng-controller="homeCtrl">
  <div class="window">
    <header class="toolbar toolbar-header">
-      <h1 class="title">Redis Data</h1>
-       
-    </header>
+      <h1 class="title">Redis Data </h1>
+      <h1 class="h"> <span class="icon icon-clock" id="dtText"> </span></h1>
+       </header>
     <div class="window-content">
   <div class="row box" >
     <div class="sidebar_canvas canvas" ng-init="init()" >
@@ -61,9 +61,13 @@ Discreption: Reading Data From RedisServer.
       <tr>
         <th>Sr.No
         </th>
+        <th>Data Type
+        </th>
         <th>Key
         </th>
         <th>Data
+        </th>
+        <th>
         </th>
 
       </tr>
@@ -71,23 +75,31 @@ Discreption: Reading Data From RedisServer.
     <tbody>
       <tr ng-repeat="itemB in items">
         <td>{{ $index + 1 }}</td>
+         <td>{{itemB.type}}</td>
         <td>{{itemB.key}}</td>
         <td>{{itemB.value}}</td>
+         <td>
+          <a class="pull-right btn btn-danger btn-xs" ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+
 
       </tr>
 
     </tbody>
   </table>
 
-  <center><button class="button add" ng-click="add()">Add</button>
-  <button class="button remove" ng-click="remove()">Remove</button>
-  <button class="button load" ng-click="load()">Load Data</button></center>
+  <center>
+    <button class="button add" ng-click="add()">Add</button>
+  <!--<button class="button remove" ng-click="remove()">Remove</button>-->
+  <button class="button load" ng-click="load()">Show Data</button></center>
 
 </div>
 </div>
     </div>
       <footer class="toolbar toolbar-footer">
-      <h1 class="title">Footer</h1>
+ 
+       <h1 class="title"><span ng-hide="dataLoaded">Welcome</span></h1>
+      <h1 class="h"><span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i>Loading...</span></h1>
      
     </footer>
 </div>

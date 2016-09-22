@@ -57,7 +57,7 @@ angular.module('myApp')
                                 k.forEach(function (kData) {
                                     //Retriving  all hash value from redisServer
                                     client.hgetAsync(selected, kData).then(function (data) {
-                                        finalData.push({ key: kData, value: data });
+                                        finalData.push({ type:dataType,key: kData, value: data });
                                         i++;
                                         if (i == k.length) {
                                             console.log(finalData)
@@ -74,7 +74,7 @@ angular.module('myApp')
                             client.smembersAsync(selected).then(function (s) {
                                 console.log(s);
                                 s.forEach(function (s1) {
-                                    SetData.push({ key: selected, value: s1 })
+                                    SetData.push({ type:dataType,key: selected, value: s1 })
                                 })
                                 console.log(SetData)
                                 resolve(SetData);
@@ -84,7 +84,7 @@ angular.module('myApp')
                             //Retriving  list hash value from redisServer
                             client.lrangeAsync(selected, 0, -1).then(function (ml) {
                                 ml.forEach(function (ml1) {
-                                    SetData.push({ key: selected, value: ml1 })
+                                    SetData.push({ type:dataType, key: selected, value: ml1 })
                                 })
                                 resolve(SetData);
                             })
@@ -93,7 +93,7 @@ angular.module('myApp')
                             //Retriving  all string value from redisServer
                             client.mgetAsync(selected).then(function (str) {
                                 str.forEach(function (str1) {
-                                    SetData.push({ key: selected, value: str1 })
+                                    SetData.push({ type:dataType, key: selected, value: str1 })
                                 })
                                 resolve(SetData);
                             })
@@ -114,24 +114,24 @@ angular.module('myApp')
 
             
                 switch (name) {
-                    case 'hset': 
+                    case 'hash': 
                         client.hset(dname, dkey, dvalue, redis.print);
-                        var su = " Hash data added Success Full";
+                        var su = " Hash data added SuccessFully";
+                        resolve(su);
+                        break;
+                    case 'string':
+                        client.set(dname, dkey, redis.print);
+                        var su = " String data is SuccessFully";
                         resolve(su);
                         break;
                     case 'set':
-                        client.set(dname, dkey, redis.print);
-                        var su = " String data is Success Full";
-                        resolve(su);
-                        break;
-                    case 'sadd':
                         client.sadd(dname, dkey, redis.print);
-                        var su = " set data is added Success Full";
+                        var su = " set data is added SuccessFully";
                         resolve(su);
                         break;
-                    case 'lpush':
+                    case 'list':
                         client.lpush(dname, dkey, redis.print);
-                        var su = " List data is added Success Full";
+                        var su = " List data is added SuccessFully";
                         resolve(su);
                         break;
                     default: alert("Wrong Input");
@@ -154,24 +154,24 @@ angular.module('myApp')
 
             
                 switch (name) {
-                    case 'hdel':
+                    case 'hash':
                         client.hdel(dname, dkey, redis.print);
-                        var su = " Hash data is deleted Success Full";
+                        var su = " Hash data is deleted SuccessFully";
                         resolve(su);
                         break;
-                    case 'lpop':
+                    case 'list':
                         client.lpop(dname, redis.print);
-                        var su = " List data is deleted Success Full";
+                        var su = " List data is deleted SuccessFully";
                         resolve(su);
                         break;
-                    case 'srem':
+                    case 'set':
                         client.srem(dname, dkey, redis.print);
-                        var su = " Set data is deleted Success Full";
+                        var su = " Set data is deleted SuccessFully";
                         resolve(su);
                         break;
-                    case 'del':
+                    case 'string':
                         client.del(dname, redis.print);
-                        var su = " String data is deleted Success Full";
+                        var su = " String data is deleted SuccessFully";
                         resolve(su);
                         break;
 

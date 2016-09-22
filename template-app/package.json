@@ -10,9 +10,11 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "electron": "^1.4.0",
+    "menu": "^0.2.5",
     "node-redis": "^0.1.7",
     "photon": "^2.0.0",
-    "redis": "^2.6.2"
+    "redis": "^2.6.2",
+    "remote": "^0.2.6"
   },
   "devDependencies": {},
   "license": "ISC"

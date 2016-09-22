@@ -8,15 +8,15 @@ angular.module('myApp', ['ui.tree'])
     var array = [];
     var c = true;
     var scanStart = 0;
-    var i=0;
+    var i = 0;
     // Initializing function called when sidebar initialzied via DOM
-    $scope.init=function () {
-    
+    $scope.init = function () {
+
       // Fetch list of Data Structure starting from scanStart
       var cb = function (data, type) {
-          var final = [];
-       array.push(type);
-       i++;
+        var final = [];
+        array.push(type);
+        i++;
         if (array.length == i) {
           for (var j = 0; j < array.length; j++) {
             array[j].forEach(function (n, index) {
@@ -26,35 +26,37 @@ angular.module('myApp', ['ui.tree'])
               });//end of push
             });//end of forEach
           }
-          }
+
+        }
         scanStart = data[0];
         // console.log(scanStart)
         if (data[0] != 0) redisService.scan(scanStart, cb);
-          console.log('data', final)
+        console.log('data', final)
         //binding the data to view
         $scope.data1 = final;
+        $scope.dataLoaded = false;
       };
-          
+
       console.log("calling doScan");
       var doScan = redisService.scan(scanStart, cb);
       // console.log('doScan ',doScan);
     };
- 
+
     //function click Used to find selected node
     $scope.click = function (a) {
       var selected = a.$$watchers[0].last;
       console.log('test function ', selected);
       //passing selected data and retriving value from servise-redisService
       redisService.getData(selected).then(function (find) {
+        console.log(find)
         $scope.items = find;
-       
+
 
       })//end of getData service
     };//end of test
-
     //function add -To add data to redis server
     $scope.add = function () {
-      smalltalk.prompt('redis', 'Enter Data u want to add in proper syntax', 'Enter Data').then(function (value) {
+      smalltalk.prompt('RedisData', 'Enter Data You Want To Add (Ex:-DataType  key  data )', 'Enter Data').then(function (value) {
         var spl = value.split(/(\s+)/);
 
         var name = spl[0];
@@ -64,9 +66,11 @@ angular.module('myApp', ['ui.tree'])
 
         console.log(name, dname, dkey, dvalue);
         redisService.addData(name, dname, dkey, dvalue).then(function (su) {
-          alert(su);
-     
-          location.reload();
+          smalltalk.alert('Done',su).then(function() {
+             location.reload();
+              });
+         
+
         })
       }); //end of prompt
 
@@ -74,24 +78,36 @@ angular.module('myApp', ['ui.tree'])
 
     //function remove -To remove data to redis server
     $scope.remove = function () {
-      smalltalk.prompt('redis', 'Remove Data u want to add in proper syntax', 'Remove Data').then(function (value) {
+      smalltalk.prompt('RedisData', 'Remove Data You Want To Remove (Ex:-DataType  key  data )', 'Remove Data').then(function (value) {
         var spl = value.split(/(\s+)/);
         var name = spl[0];
         var dname = spl[2];
         var dkey = spl[4];
         console.log(name, dname, dkey);
         redisService.removeData(name, dname, dkey).then(function (su) {
-          alert(su);
-          location.reload();
+        smalltalk.alert('Done',su).then(function() {
+             location.reload();
+              });
         })
 
       });//end of prompt
 
     }//end of remove
     $scope.load = function () {
+      $scope.dataLoaded = true;
+      setTimeout(function () {
      
-    }
+         
+         smalltalk.alert('Done','Data Loaded Successfully').then(function() {
+              $scope.dataLoaded = false;
+             
+});
+      }, 300);
 
+    }
+    
+    var today = new Date();
+    document.getElementById('dtText').innerHTML = today.toDateString();
   })//end of controller
 
 
