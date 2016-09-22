@@ -519,20 +519,32 @@ h6 {
 }
 
 .toolbar-header {
-  border-bottom: 1px solid #c2c0c2;
+  border-bottom: 1px solid #6db3fd;
+  
 }
 .toolbar-header .title {
   margin-top: 6px;
 }
 
 .toolbar-footer {
-  border-top: 1px solid #c2c0c2;
+  border-top: 1px solid solid #6db3fd;
   -webkit-app-region: drag;
 }
 .toolbar-footer .title {
   margin-top: 6px;
 }
+.toolbar-footer .h {
+  margin-top: 6px;
+}
 
+.h{
+     margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: right;
+  color:green;
+  cursor: default;
+}
 .title {
   margin: 0;
   font-size: 12px;
@@ -2253,7 +2265,7 @@ th {
   border-bottom: 1px solid #ddd;
 }
 
-th,
+th,7276315953
 td {
   padding: 2px 15px;
   white-space: nowrap;
